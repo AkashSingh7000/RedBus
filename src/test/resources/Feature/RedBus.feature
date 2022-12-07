@@ -10,6 +10,7 @@ Feature: UI Automation of RedBus
     Then user click on view seats for "<Bus>"
     And user selected the seat
 
+
   Examples:
     |From              |To        |Date       |Bus         |
     |Esplanade, Kolkata|Jamshedpur|31-Dec-2022|Baba Travels|
