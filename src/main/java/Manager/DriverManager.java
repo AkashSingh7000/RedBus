@@ -24,12 +24,13 @@ public class DriverManager {
     }
     public static WebDriver getDriver()
     {
-        driver = createDriver();
-        return driver;
+        if(driver==null) {
+            driver = createDriver();
+            return  driver;
+        }
+        else {
+            return driver;
+        }
     }
 
-    public static void closeDriver()
-    {
-        driver.close();
-    }
 }
