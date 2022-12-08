@@ -40,6 +40,7 @@
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
 			<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
 			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
 		</ul>
 		<!-- report name -->
@@ -49,7 +50,7 @@
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Dec 8, 2022 07:10:50 PM</span>
+			<span class='label blue darken-3 suite-start-time'>Dec 8, 2022 07:20:57 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -64,7 +65,7 @@
 				<i class='material-icons'>warning</i> Status
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
-										<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+										<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -118,12 +119,12 @@
                     <canvas id='parent-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='$100%'>
-                    <span class='strong'>1</span> features passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='$0%'>
+                    <span class='strong'>0</span> features passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> features failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>
+                    1</span> features failed, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> skipped
                 </div>
@@ -136,12 +137,12 @@
                     <canvas id='child-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
-                    <span class='strong'>1</span> scenarios passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='0%'>
+                    <span class='strong'>0</span> scenarios passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> scenarios failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='100%'>
+                    1</span> scenarios failed, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> skipped, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
@@ -156,14 +157,14 @@
                     <canvas id='grandchild-analysis' width='90' height='70'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span class='tooltipped' data-position='top' data-tooltip='100%'>
-                    <span class='strong'>1</span> steps passed</span>
+                    <span class='tooltipped' data-position='top' data-tooltip='0%'>
+                    <span class='strong'>0</span> steps passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> steps failed, 
-                    <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
-                    0</span> skipped, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='10%'>
+                    1</span> steps failed, 
+                    <span class='strong tooltipped' data-position='top' data-tooltip='90%'>
+                    9</span> skipped, 
                     <span class='strong tooltipped' data-position='top' data-tooltip='0%'>
                     0</span> others
                 </div>
@@ -184,11 +185,11 @@
 	<div class='subview-left left'>
 		<div class='view-summary'>
 			<ul id='test-collection' class='test-collection'>
-				<li class='test displayed active has-leaf pass' status='pass' bdd='true' test-id='1'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='true' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>UI Automation of RedBus</span>
-						<span class='test-time'>Dec 8, 2022 07:10:53 PM</span>
-						<span class='test-status right pass'>Pass</span>
+						<span class='test-time'>Dec 8, 2022 07:20:58 PM</span>
+						<span class='test-status right fail'>Fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class="sr-filters bdd-filters">
@@ -198,28 +199,86 @@
 	<a class="btn-floating waves-effect waves-light clear grey" title="clear"><i class='material-icons'>clear</i></a>
 </div>
 
-<div class='scenario outline node' test-id='2' status='pass'>
+<div class='scenario outline node' test-id='2' status='fail'>
 
-	<span class='duration right label'>00 00 21.712</span>
+	<span class='duration right label'>00 01 12.202</span>
 	<div class="bdd-test">
-		<div class="scenario-name"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span> Scenario Outline: Validation of RedBus functionality</div>
+		<div class="scenario-name"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span> Scenario Outline: Validation of RedBus functionality</div>
 	</div>
 	
 		<div class='node-desc'><br><br><table class='markup-table table '><tr><td>From</td><td>To</td><td>Date</td><td>Bus</td><td>Boarding Point</td><td>Dropping Point</td></tr><tr><td>Esplanade, Kolkata</td><td>Jamshedpur</td><td>31-Dec-2022</td><td>Baba Travels</td><td>Babughat,Kolkatta (BABA COUNTER)</td><td>Jamshedpur Pardichouk</td></tr></table></div>
 	
 	
 	<ul class='steps'>
-		<li test-id='3' class='node scenario Pass' status='Pass'>
-			<div class="step-name" title="()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Validation of RedBus functionality</div>
+		<li test-id='3' class='node scenario Fail' status='Fail'>
+			<div class="step-name" title="()"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Validation of RedBus functionality</div>
 
 				<div class='category-list'>
 						<span class='category label'>@Test</span>
 				</div>
 
 			<ul class='gc steps'>
-				<li test-id='4' class='gc given Pass' status='Pass'>
-					<h6 class="step-name" title="StepDefinition.RedBus_StepDef.userIsInsideRedbusHomepage()"><span class='status pass' title='Pass'><i class='material-icons'>check_circle</i></span>Given user is inside redbus homepage</h6>
+				<li test-id='4' class='gc given Fail' status='Fail'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userIsInsideRedbusHomepage()"><span class='status fail' title='Fail'><i class='material-icons'>cancel</i></span>Given user is inside redbus homepage</h6>
 
+							<textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //button[text()='Search Buses'] (tried for 60 second(s) with 500 milliseconds interval)
+Build info: version: '4.6.0', revision: '79f1c02ae20'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.94, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\AKUMAR~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:56798}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:56798/devtoo..., se:cdpVersion: 108.0.5359.94, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 21ab548fe0cd0d70bc79cd6e8b105cb2
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at Utils.BaseUtils.untilVisible(BaseUtils.java:74)
+	at PageObject.RedBusPage.homePage(RedBusPage.java:42)
+	at StepDefinition.RedBusStepDef.userIsInsideRedbusHomepage(RedBusStepDef.java:23)
+	at ✽.user is inside redbus homepage(file:///C:/Users/akumarsing017/RedBus/RedBus_UI_Automation/src/test/resources/feature/RedBus.feature:6)
+</textarea>
+				</li>
+				<li test-id='5' class='gc when Skip' status='Skip'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userEntersFromCity(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>When user enters "Esplanade, Kolkata" city for source</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='6' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userEntersToCity(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And user enters "Jamshedpur" city for destination</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='7' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userSelectForJourney(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And user select "31-Dec-2022" for journey</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='8' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userClickOnSearchBuses()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then user click on search buses</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='9' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userClickOnViewSeatsFor(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then user click on view seats for "Baba Travels"</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='10' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userSelectedTheSeat()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And user selected the seat</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='11' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userSelectedThe(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then user selected the "Babughat,Kolkatta (BABA COUNTER)" of source</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='12' class='gc and Skip' status='Skip'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userSelectedTheOfDestination(java.lang.String)"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>And user selected the "Jamshedpur Pardichouk" of destination</h6>
+
+							<div class="node-step">Step skipped</div>
+				</li>
+				<li test-id='13' class='gc then Skip' status='Skip'>
+					<h6 class="step-name" title="StepDefinition.RedBusStepDef.userClickOnProceedToBook()"><span class='status skip' title='Skip'><i class='material-icons'>redo</i></span>Then user click on Proceed To Book</h6>
+
+							<div class="node-step">Step skipped</div>
 				</li>
 			</ul>
 		</li>
@@ -271,13 +330,13 @@
 					<div class='category-heading'>
 						<span class='category-name'>@Test</span>
 						<span class='category-status right'>
-						<span class='label pass'>1</span>
+						<span class='label fail'>1</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
-							<span status="pass" class='label green accent-4 white-text'>Passed: 1</span>
 							
+							<span status="fail" class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
 						<div class='category-tests'>
@@ -291,9 +350,9 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Dec 8, 2022 07:10:53 PM</td>
+										<td>Dec 8, 2022 07:20:58 PM</td>
 										<td class='linked' test-id='3'>Validation of RedBus functionality</td>
-										<td><span class='test-status Pass'>Pass</span></td>
+										<td><span class='test-status Fail'>Fail</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -309,7 +368,74 @@
 		</div>
 	</div>
 </div>
-<!-- category view --><div id='dashboard-view' class='view hide'>
+<!-- category view --><div id='exception-view' class='view hide'>
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+				<i class='material-icons'>search</i> Search
+				</a>
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+	<div class='subview-left left'>
+		<div class='view-summary'>
+			<ul id='exception-collection' class='exception-collection'>
+				<li class='exception displayed active'>
+					<div class='exception-heading'>
+						<span class='exception-name'>org.openqa.selenium.TimeoutException</span>
+						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+					</div>
+					<div class='exception-content hide'>
+						<div class='exception-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>StackTrace</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Dec 8, 2022 07:20:58 PM</td>
+										<td class='linked' test-id='4'>Given user is inside redbus homepage</td>
+										<td>
+											<textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //button[text()='Search Buses'] (tried for 60 second(s) with 500 milliseconds interval)
+Build info: version: '4.6.0', revision: '79f1c02ae20'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.94, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\AKUMAR~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:56798}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:56798/devtoo..., se:cdpVersion: 108.0.5359.94, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 21ab548fe0cd0d70bc79cd6e8b105cb2
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at Utils.BaseUtils.untilVisible(BaseUtils.java:74)
+	at PageObject.RedBusPage.homePage(RedBusPage.java:42)
+	at StepDefinition.RedBusStepDef.userIsInsideRedbusHomepage(RedBusStepDef.java:23)
+	at ✽.user is inside redbus homepage(file:///C:/Users/akumarsing017/RedBus/RedBus_UI_Automation/src/test/resources/feature/RedBus.feature:6)
+</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='exception-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- exception view --><div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
 		<h5>Dashboard</h5>
 
@@ -329,25 +455,25 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>1</div>
+					<div class='panel-lead'>10</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Dec 8, 2022 07:10:50 PM</div>
+					<div class='panel-lead'>Dec 8, 2022 07:20:57 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Dec 8, 2022 07:11:14 PM</div>
+			 		<div class='panel-lead'>Dec 8, 2022 07:22:10 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>00 00 24.372</div>
+					<div class='panel-lead'>00 01 13.635</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -364,11 +490,11 @@
 						</tr>
 						<tr>
 							<td>@Test</td>
+							<td>0</td>
 							<td>1</td>
 							<td>0</td>
-							<td>0</td>
 							<td>
-									100%
+									0%
 							</td>
 						</tr>
 					</table>
@@ -383,34 +509,34 @@
 		<script>
 			var statusGroup = {
                 parentCount: 1,
-				passParent: 1,
-				failParent: 0,
+				passParent: 0,
+				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
 				childCount: 1,
-				passChild: 1,
-				failChild: 0,
+				passChild: 0,
+				failChild: 1,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				grandChildCount: 1,
-				passGrandChild: 1,
-				failGrandChild: 0,
+				grandChildCount: 10,
+				passGrandChild: 0,
+				failGrandChild: 1,
 				fatalGrandChild: 0,
 				errorGrandChild: 0,
 				warningGrandChild: 0,
-				skipGrandChild: 0,
+				skipGrandChild: 9,
 				infoGrandChild: 0,
 			};
 			</script>
 		
 		<script>
 			var timeline = {
-			        "UI Automation of RedBus":21.72
+			        "UI Automation of RedBus":72.206
 			};
 		</script>
 		

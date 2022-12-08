@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class RedBus_Page {
+public class RedBusPage {
 
     String SEARCH_BUSES = "//button[text()='Search Buses']";
     String FROM = "//input[@data-message = 'Please enter a source city']";
@@ -29,7 +29,7 @@ public class RedBus_Page {
     Duration duration;
     JavascriptExecutor js;
 
-    public RedBus_Page(WebDriver driver){
+    public RedBusPage(WebDriver driver){
        this.driver = driver;
        baseUtils = new BaseUtils();
        duration = baseUtils.getDuration();

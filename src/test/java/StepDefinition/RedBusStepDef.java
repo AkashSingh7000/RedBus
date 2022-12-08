@@ -1,22 +1,22 @@
 package StepDefinition;
 
 import Manager.DriverManager;
-import PageObject.RedBus_Page;
+import PageObject.RedBusPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
-public class RedBus_StepDef {
+public class RedBusStepDef {
 
         WebDriver driver;
-        RedBus_Page redbus;
+        RedBusPage redbus;
 
-        public RedBus_StepDef()
+        public RedBusStepDef()
         {
             driver = DriverManager.getDriver();
-            redbus = new RedBus_Page(driver);
+            redbus = new RedBusPage(driver);
         }
     @Given("user is inside redbus homepage")
     public void userIsInsideRedbusHomepage() {
