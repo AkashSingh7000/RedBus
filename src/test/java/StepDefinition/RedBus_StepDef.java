@@ -23,12 +23,12 @@ public class RedBus_StepDef {
         redbus.homePage();
     }
 
-    @When("user enters {string} city")
+    @When("user enters {string} city for source")
     public void userEntersFromCity(String from) {
         redbus.enterFromDetails(from);
     }
 
-    @And("user enters {string} city\"")
+    @And("user enters {string} city for destination")
     public void userEntersToCity(String to){
         redbus.enterToDetails(to);
     }
@@ -52,4 +52,28 @@ public class RedBus_StepDef {
     public void userSelectedTheSeat() {
             redbus.selectSeat();
     }
+
+    @Then("user selected the {string} of source")
+    public void userSelectedThe(String boardingpoint) {
+            redbus.selectBoardingPoint(boardingpoint);
+    }
+
+    @And("user selected the {string} of destination")
+    public void userSelectedTheOfDestination(String droppingpoint) {
+            redbus.selectDroppingPoint(droppingpoint);
+    }
+
+    /*
+    @And("user click on continue button")
+    public void userClickOnContinueButton() {
+        redbus.clickOnContinue();
+    }
+    */
+
+    @Then("user click on Proceed To Book")
+    public void userClickOnProceedToBook() {
+            redbus.proceedTGoBook();
+            DriverManager.closeDriver();
+    }
+
 }

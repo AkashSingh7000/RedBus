@@ -20,6 +20,10 @@ public class RedBus_Page {
     String VIEW_SEATS = "//div[text()='$value$']/ancestor::li/div/div/following-sibling::div/child::div";
     String DATE = "//label[text()='Date']/preceding-sibling::input";
     String LOWER_DECK = "//canvas[@data-type='lower']";
+    String BOARDING_POINT = "//div[text()='$value$']";
+    String DROPPING_POINT = "//button[text()='continue']/preceding-sibling::div/div/div/following-sibling::div/following-sibling::div/ul/li/div/following-sibling::div/following-sibling::div/div[text()='$value$']";
+    String CONTINUE = "//button[text()='continue']";
+    String PROCEED_TO_BOOK = "//button[text()='Proceed to book']";
     WebDriver driver;
     BaseUtils baseUtils;
     Duration duration;
@@ -79,4 +83,30 @@ public class RedBus_Page {
         Actions act = new Actions(driver);
         act.moveToElement(ele, 5, 45).click().perform();
     }
+
+    public void selectBoardingPoint(String boardingpoint) {
+        By by = By.xpath(BOARDING_POINT.replace("$value$", boardingpoint));
+        WebElement selectBoaring = baseUtils.untilVisible(driver, by, duration);
+        selectBoaring.click();
+    }
+
+    public void selectDroppingPoint(String droppingpoint) {
+        By by = By.xpath(DROPPING_POINT.replace("$value$", droppingpoint));
+        WebElement selectDropping = baseUtils.untilVisible(driver, by, duration);
+        selectDropping.click();
+    }
+
+    public void clickOnContinue() {
+        By by = By.xpath(CONTINUE);
+        WebElement eleContinue = baseUtils.untilVisible(driver, by, duration);
+        eleContinue.click();
+    }
+
+    public void proceedTGoBook() {
+        By by = By.xpath(PROCEED_TO_BOOK);
+        WebElement eleProceedToBook = baseUtils.untilVisible(driver, by, duration);
+        eleProceedToBook.click();
+        baseUtils.hardWait(5000);
+    }
+
 }

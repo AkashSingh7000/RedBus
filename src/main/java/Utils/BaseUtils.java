@@ -10,7 +10,6 @@ import java.io.*;
 import java.time.Duration;
 import java.util.Properties;
 
-import static Manager.DriverManager.driver;
 
 public class BaseUtils {
 
@@ -40,19 +39,34 @@ public class BaseUtils {
     public String getBrowser()
     {
         String browser = properties.getProperty("browser");
-        return browser;
+        if(browser!=null) {
+            return browser;
+        }
+        else{
+            throw new RuntimeException("browser is not specified in config.properties file");
+        }
     }
 
     public String getURL()
     {
         String url = properties.getProperty("url");
-        return url;
+        if(url!=null) {
+            return url;
+        }
+        else{
+            throw new RuntimeException("url is not specified in config.properties file");
+        }
     }
 
     public Duration getDuration()
     {
         Duration duration = Duration.ofSeconds(Long.parseLong(properties.getProperty("duration")));
-        return duration;
+        if(duration!=null) {
+            return duration;
+        }
+        else{
+            throw new RuntimeException("duration is not specified in config.properties file");
+        }
     }
 
     public WebElement untilVisible(WebDriver driver, By ob, Duration ofSeconds) {
@@ -61,4 +75,11 @@ public class BaseUtils {
         return (driver.findElement(ob));
     }
 
+    public void hardWait(int i) {
+        try {
+            Thread.sleep(i);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
