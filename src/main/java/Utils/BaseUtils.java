@@ -1,5 +1,6 @@
 package Utils;
 
+import Manager.DriverManager;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.By;
@@ -78,11 +79,16 @@ public class BaseUtils {
     }
 
     public void hardWait(int i) {
-        try {
-            Thread.sleep(i);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
+            try {
+                WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofMillis(i));
+                synchronized (wait) {
+                    wait.wait(i);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
     }
 
     public String getJsonFilePath()
