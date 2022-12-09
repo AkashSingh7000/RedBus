@@ -76,7 +76,6 @@ public class RedBusStepDef {
     @Then("user click on Proceed To Book")
     public void userClickOnProceedToBook() {
         redbus.proceedTGoBook();
-        baseUtils.hardWait(2000);
     }
 
 }

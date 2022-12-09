@@ -10,6 +10,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -17,7 +21,10 @@ import java.util.Properties;
 public class BaseUtils {
 
     private final String configPath = "config/config.properties";
-    Properties properties = new Properties();;
+    private static Properties properties = new Properties();
+
+    private static Connection con = null;
+
 
     public BaseUtils()
     {
@@ -115,4 +122,40 @@ public class BaseUtils {
             throw new RuntimeException(e);
         }
     }
+
+    public static Connection connectToDB()
+    {
+        try
+        {
+        final String dbDriver = properties.getProperty("dbdriver");
+        final String host = properties.getProperty("host");
+        final String port = properties.getProperty("port");
+        final String dbName = properties.getProperty("dbname");
+        final String user = properties.getProperty("dbuser");
+        final String pwd = properties.getProperty("dbpassword");
+
+            Class.forName(dbDriver);
+            con = java.sql.DriverManager.getConnection("jdbc:postgresql://"+host+":"+port+"/"+dbName+"",user,pwd);
+
+        } catch (ClassNotFoundException | SQLException e) {
+
+            throw new RuntimeException(e);
+        }
+        return  con;
+    }
+
+    public static ResultSet executeQuery() throws SQLException {
+        con = connectToDB();
+        String query = properties.getProperty("query");
+        PreparedStatement st = con.prepareStatement(query);
+        ResultSet rs = st.executeQuery();
+        return rs;
+    }
+
+    public static void closeCon() throws SQLException {
+        con.close();;
+    }
+
+
+
 }

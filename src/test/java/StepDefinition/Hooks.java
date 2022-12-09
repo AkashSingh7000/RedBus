@@ -1,6 +1,7 @@
 package StepDefinition;
 
 import Manager.DriverManager;
+import Utils.BaseUtils;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import org.apache.commons.io.FileUtils;
@@ -9,6 +10,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Hooks {
 
@@ -19,7 +22,7 @@ public class Hooks {
         driver = DriverManager.getDriver();
     }
 
-    @After(order = 1)
+    @After(order = 2)
     public void capture(Scenario sc) throws IOException {
         if(sc.isFailed())
         {
@@ -31,6 +34,16 @@ public class Hooks {
         }
     }
 
+    @After(order = 1)
+    public void printDataFromDB() throws SQLException {
+        ResultSet rs = BaseUtils.executeQuery();
+        while(rs.next())
+        {
+            System.out.println(rs.getString("name") + "=" + rs.getInt("id"));
+        }
+
+        BaseUtils.closeCon();
+    }
     @After(order = 0)
     public void afterExecutionsFinished(){
         driver.close();
