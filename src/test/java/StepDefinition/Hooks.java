@@ -9,7 +9,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -26,11 +28,18 @@ public class Hooks {
     public void capture(Scenario sc) throws IOException {
         if(sc.isFailed())
         {
+            /*
             TakesScreenshot ts = (TakesScreenshot) driver;
             File src = ts.getScreenshotAs(OutputType.FILE);
             File dest = new File(System.getProperty("user.dir")+"\\screenshots\\"+System.currentTimeMillis()+".png");
             FileUtils.cleanDirectory(new File(System.getProperty("user.dir") + "\\screenshots\\"));
             FileUtils.copyFile(src, dest);
+            */
+
+            // Taking Screenshot
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            File src = ts.getScreenshotAs(OutputType.FILE);
+            sc.attach(Files.readAllBytes(src.toPath()), "image/png", "Screenshot");
         }
     }
 
