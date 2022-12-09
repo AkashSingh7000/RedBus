@@ -1,5 +1,7 @@
 package Utils;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -79,6 +81,31 @@ public class BaseUtils {
         try {
             Thread.sleep(i);
         } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String getJsonFilePath()
+    {
+        String dataPath = properties.getProperty("jsonFilePath");
+        if(dataPath!=null)
+        {
+            return  dataPath;
+        }
+        else{
+            throw new RuntimeException("jsonFilePath is not specified in config.properties file");
+        }
+
+    }
+
+    public String getjsonData(String s){
+        try {
+        String path = getJsonFilePath();
+        JSONParser parser = new JSONParser();
+        Object obj= parser.parse(new FileReader(System.getProperty("user.dir")+path));
+        JSONObject jsonObject = (JSONObject) obj;
+        return ((String) jsonObject.get(s));
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
