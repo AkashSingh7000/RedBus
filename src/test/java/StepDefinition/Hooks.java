@@ -26,8 +26,8 @@ public class Hooks {
             TakesScreenshot ts = (TakesScreenshot) driver;
             File src = ts.getScreenshotAs(OutputType.FILE);
             File dest = new File(System.getProperty("user.dir")+"\\screenshots\\"+System.currentTimeMillis()+".png");
+            FileUtils.cleanDirectory(new File(System.getProperty("user.dir") + "\\screenshots\\"));
             FileUtils.copyFile(src, dest);
-
         }
     }
 

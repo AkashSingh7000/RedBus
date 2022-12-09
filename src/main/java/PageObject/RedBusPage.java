@@ -62,8 +62,7 @@ public class RedBusPage {
     public void enterDate(String date) {
         WebElement dateField = driver.findElement(By.xpath(DATE));
         js.executeScript("arguments[0].value=arguments[1]", dateField, date);
-
-
+        baseUtils.hardWait(2000);
     }
 
     public void searchBuses() {
