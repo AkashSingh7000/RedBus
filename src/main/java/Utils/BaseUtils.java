@@ -153,7 +153,7 @@ public class BaseUtils {
     }
 
     public static void closeCon() throws SQLException {
-        con.close();;
+        con.close();
     }
 
 
