@@ -17,7 +17,7 @@ public class RedBusHomePage {
     String TO = "//input[@data-message = 'Please enter a destination city']";
     String SUGGESTED_VALUE = "//li[text()='$value$']";
 
-    String VIEW_SEATS = "//div[text()='$value$']/ancestor::li/div/div/following-sibling::div/child::div";
+    String FILTERS = "//div[text()='FILTERS']";
     String DATE = "//label[text()='Date']/preceding-sibling::input";
 
     WebDriver driver;
@@ -64,6 +64,9 @@ public class RedBusHomePage {
     public void searchBuses() {
         WebElement searchBuses = driver.findElement(By.xpath(SEARCH_BUSES));
         searchBuses.click();
+        By byElement = By.xpath(FILTERS);
+        WebElement filters = baseUtils.untilVisible(driver, byElement, duration);
+        Assert.assertTrue(filters.isDisplayed());
     }
 
 }

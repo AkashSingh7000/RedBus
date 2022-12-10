@@ -19,6 +19,9 @@ public class RedBusSearchResultPage {
     String DROPPING_POINT = "//button[text()='continue']/preceding-sibling::div/div/div/following-sibling::div/following-sibling::div/ul/li/div/following-sibling::div/following-sibling::div/div[text()='$value$']";
     String CONTINUE = "//button[text()='continue']";
     String PROCEED_TO_BOOK = "//button[text()='Proceed to book']";
+    String SEAT_PRICE = "//h3[text()='Seat Price']";
+
+    String AMOUNT_TAX = "//span[text()=\"Taxes will be calculated during payment\"]";
     WebDriver driver;
     BaseUtils baseUtils;
     Duration duration;
@@ -35,6 +38,9 @@ public class RedBusSearchResultPage {
         By loc = By.xpath(VIEW_SEATS.replace("$value$", bus));
         WebElement eleBus = baseUtils.untilVisible(driver, loc, duration);
         eleBus.click();
+        By byElement = By.xpath(SEAT_PRICE);
+        WebElement seatPrice = baseUtils.untilVisible(driver, byElement, duration);
+        Assert.assertTrue(seatPrice.isDisplayed());
     }
 
     public void selectSeat() {
@@ -42,18 +48,27 @@ public class RedBusSearchResultPage {
         js.executeScript("arguments[0].scrollIntoView(true)", ele);
         Actions act = new Actions(driver);
         act.moveToElement(ele, 5, 45).click().perform();
+        By byElement = By.xpath(AMOUNT_TAX);
+        WebElement amountTax = baseUtils.untilVisible(driver, byElement, duration);
+        Assert.assertTrue(amountTax.isDisplayed());
     }
 
     public void selectBoardingPoint(String boardingpoint) {
         By by = By.xpath(BOARDING_POINT.replace("$value$", boardingpoint));
-        WebElement selectBoaring = baseUtils.untilVisible(driver, by, duration);
-        selectBoaring.click();
+        WebElement selectBoarding = baseUtils.untilVisible(driver, by, duration);
+        selectBoarding.click();
+        By byElement = By.xpath(AMOUNT_TAX);
+        WebElement amountTax = baseUtils.untilVisible(driver, byElement, duration);
+        Assert.assertTrue(amountTax.isDisplayed());
     }
 
     public void selectDroppingPoint(String droppingpoint) {
         By by = By.xpath(DROPPING_POINT.replace("$value$", droppingpoint));
         WebElement selectDropping = baseUtils.untilVisible(driver, by, duration);
         selectDropping.click();
+        By byElement = By.xpath(PROCEED_TO_BOOK);
+        WebElement ele = baseUtils.untilVisible(driver, byElement, duration);
+        Assert.assertTrue(ele.isDisplayed());
     }
 
 /*
@@ -67,7 +82,9 @@ public class RedBusSearchResultPage {
         By by = By.xpath(PROCEED_TO_BOOK);
         WebElement eleProceedToBook = baseUtils.untilVisible(driver, by, duration);
         eleProceedToBook.click();
-        baseUtils.hardWait(5000);
+        WebElement arrow = baseUtils.untilVisible(driver, By.id("cust-info-back-arrow"), duration);
+        Assert.assertTrue(arrow.isDisplayed());
+        baseUtils.hardWait(2000);
     }
 
 }
