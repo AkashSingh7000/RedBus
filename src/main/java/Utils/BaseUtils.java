@@ -152,10 +152,4 @@ public class BaseUtils {
         return rs;
     }
 
-    public static void closeCon() throws SQLException {
-        con.close();
-    }
-
-
-
 }

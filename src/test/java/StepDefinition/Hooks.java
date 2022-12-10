@@ -52,7 +52,6 @@ public class Hooks {
             System.out.println(rs.getString("name") + " = " + rs.getInt("id"));
         }
 
-        BaseUtils.closeCon();
     }
     @After(order = 0)
     public void afterExecutionsFinished(){
