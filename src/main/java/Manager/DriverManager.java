@@ -24,8 +24,8 @@ public class DriverManager {
         if(browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions op = new ChromeOptions();
-            op.setHeadless(true);
-            driver = new ChromeDriver();
+            op.addArguments("--headless");
+            driver = new ChromeDriver(op);
 
         }
         else if(browser.equalsIgnoreCase("edge")) {
