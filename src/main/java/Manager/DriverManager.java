@@ -5,6 +5,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,6 +23,8 @@ public class DriverManager {
         String browser = baseUtils.getBrowser();
         if(browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
+            ChromeOptions op = new ChromeOptions();
+            op.setHeadless(true);
             driver = new ChromeDriver();
 
         }
