@@ -24,6 +24,8 @@ public class Hooks {
         driver = DriverManager.getDriver();
     }
 
+
+    // To capture screenshots
     @AfterStep()
     public void capture(Scenario sc) throws IOException {
 
@@ -43,6 +45,7 @@ public class Hooks {
 
     }
 
+    // To fetch data from database and print it
     @After(order = 1)
     public void printDataFromDB() throws SQLException {
         ResultSet rs = BaseUtils.executeQuery();
@@ -53,6 +56,8 @@ public class Hooks {
         }
 
     }
+
+    // To close the driver
     @After(order = 0)
     public void afterExecutionsFinished(){
         driver.close();

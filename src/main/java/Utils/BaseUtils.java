@@ -31,6 +31,7 @@ public class BaseUtils {
         readPropertyFile();
     }
 
+    // To read property file
     private void readPropertyFile()
     {
         FileInputStream reader = null;
@@ -46,6 +47,8 @@ public class BaseUtils {
         }
         ;
     }
+
+    // To get browser details from property file
     public String getBrowser()
     {
         String browser = properties.getProperty("browser");
@@ -57,6 +60,7 @@ public class BaseUtils {
         }
     }
 
+    // To get url details from property file
     public String getURL()
     {
         String url = properties.getProperty("url");
@@ -68,6 +72,7 @@ public class BaseUtils {
         }
     }
 
+    // To get timeout duration from property file
     public Duration getDuration()
     {
         Duration duration = Duration.ofSeconds(Long.parseLong(properties.getProperty("duration")));
@@ -79,12 +84,14 @@ public class BaseUtils {
         }
     }
 
+    // To perform wait until web element is visible
     public WebElement untilVisible(WebDriver driver, By ob, Duration ofSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, ofSeconds);
         wait.until(ExpectedConditions.visibilityOfElementLocated(ob));
         return (driver.findElement(ob));
     }
 
+    // To wait for specified time duration
     public void hardWait(int i) {
 
             try {
@@ -98,6 +105,7 @@ public class BaseUtils {
 
     }
 
+    // To read json file path from property file
     public String getJsonFilePath()
     {
         String dataPath = properties.getProperty("jsonFilePath");
@@ -111,6 +119,7 @@ public class BaseUtils {
 
     }
 
+    // To read data from json file
     public String getjsonData(String s){
         try {
         String path = getJsonFilePath();
@@ -123,6 +132,7 @@ public class BaseUtils {
         }
     }
 
+    // To connect the database
     public static Connection connectToDB()
     {
         try
@@ -144,6 +154,7 @@ public class BaseUtils {
         return  con;
     }
 
+    // To execute the query
     public static ResultSet executeQuery() throws SQLException {
         con = connectToDB();
         String query = properties.getProperty("query");

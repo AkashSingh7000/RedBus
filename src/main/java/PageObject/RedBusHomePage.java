@@ -33,6 +33,8 @@ public class RedBusHomePage {
        duration = baseUtils.getDuration();
        js = (JavascriptExecutor) driver;
     }
+
+    // To open rebus homepage
     public void homePage() {
         driver.get(baseUtils.getURL());
         driver.manage().window().maximize();
@@ -41,6 +43,7 @@ public class RedBusHomePage {
         Assert.assertTrue(search.isDisplayed());
     }
 
+    // To enter source details
     public void enterFromDetails(String from) {
         WebElement fromField = driver.findElement(By.xpath(FROM));
         fromField.sendKeys(from);
@@ -49,6 +52,7 @@ public class RedBusHomePage {
         js.executeScript("arguments[0].click()", suggestion);
     }
 
+    // To enter destination details
     public void enterToDetails(String to) {
         WebElement toField = driver.findElement(By.xpath(TO));
         toField.sendKeys(to);
@@ -57,6 +61,7 @@ public class RedBusHomePage {
         js.executeScript("arguments[0].click()", suggestion);
     }
 
+    // To enter date of journey
     public void enterDate(String date) {
         WebElement dateField = driver.findElement(By.xpath(DATE_FIELD));
         js.executeScript("arguments[0].click()", dateField);
@@ -67,6 +72,7 @@ public class RedBusHomePage {
         baseUtils.hardWait(2000);
     }
 
+    // To click on search buses to get the result of buses list
     public void searchBuses() {
         WebElement searchBuses = driver.findElement(By.xpath(SEARCH_BUSES));
         searchBuses.click();

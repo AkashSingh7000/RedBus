@@ -34,6 +34,7 @@ public class RedBusSearchResultPage {
        js = (JavascriptExecutor) driver;
     }
 
+    // To click on view seats on the basis of bus details
     public void clickOnViewSeats(String bus) {
         By loc = By.xpath(VIEW_SEATS.replace("$value$", bus));
         WebElement eleBus = baseUtils.untilVisible(driver, loc, duration);
@@ -44,6 +45,7 @@ public class RedBusSearchResultPage {
         Assert.assertTrue(seatPrice.isDisplayed());
     }
 
+    // To select the seat
     public void selectSeat() {
         WebElement ele = baseUtils.untilVisible(driver, By.xpath(LOWER_DECK), duration);
         js.executeScript("arguments[0].scrollIntoView(true)", ele);
@@ -54,6 +56,7 @@ public class RedBusSearchResultPage {
         Assert.assertTrue(amountTax.isDisplayed());
     }
 
+    // To select the boarding point from source
     public void selectBoardingPoint(String boardingpoint) {
         By by = By.xpath(BOARDING_POINT.replace("$value$", boardingpoint));
         WebElement selectBoarding = baseUtils.untilVisible(driver, by, duration);
@@ -63,6 +66,7 @@ public class RedBusSearchResultPage {
         Assert.assertTrue(amountTax.isDisplayed());
     }
 
+    // To select the dropping point of destination
     public void selectDroppingPoint(String droppingpoint) {
         By by = By.xpath(DROPPING_POINT.replace("$value$", droppingpoint));
         WebElement selectDropping = baseUtils.untilVisible(driver, by, duration);
@@ -79,6 +83,8 @@ public class RedBusSearchResultPage {
         eleContinue.click();
     }
 */
+
+    // To click on proceed to book
     public void proceedTGoBook() {
         By by = By.xpath(PROCEED_TO_BOOK);
         WebElement eleProceedToBook = baseUtils.untilVisible(driver, by, duration);
