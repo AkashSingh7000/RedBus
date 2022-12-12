@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public class RedBusSearchResultPage {
 
-    String VIEW_SEATS = "//div[text()='$value$']/ancestor::li/div/div/following-sibling::div/child::div";
+    String VIEW_SEATS = "//div[text()='$value$']/ancestor::li/div/div/following-sibling::div/child::div[text() = 'View Seats']";
     String DATE = "//label[text()='Date']/preceding-sibling::input";
     String LOWER_DECK = "//canvas[@data-type='lower']";
     String BOARDING_POINT = "//div[text()='$value$']";
@@ -37,7 +37,8 @@ public class RedBusSearchResultPage {
     public void clickOnViewSeats(String bus) {
         By loc = By.xpath(VIEW_SEATS.replace("$value$", bus));
         WebElement eleBus = baseUtils.untilVisible(driver, loc, duration);
-        eleBus.click();
+        js.executeScript("arguments[0].scrollIntoView(true)", eleBus);
+        js.executeScript("arguments[0].click()", eleBus);
         By byElement = By.xpath(SEAT_PRICE);
         WebElement seatPrice = baseUtils.untilVisible(driver, byElement, duration);
         Assert.assertTrue(seatPrice.isDisplayed());

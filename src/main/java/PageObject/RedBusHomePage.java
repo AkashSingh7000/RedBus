@@ -18,7 +18,9 @@ public class RedBusHomePage {
     String SUGGESTED_VALUE = "//li[text()='$value$']";
 
     String FILTERS = "//div[text()='FILTERS']";
-    String DATE = "//label[text()='Date']/preceding-sibling::input";
+    String DATE_FIELD = "//label[text()='Date']/preceding-sibling::input";
+
+    String DATE = "//td[text()='$value$']";
 
     WebDriver driver;
     BaseUtils baseUtils;
@@ -56,8 +58,12 @@ public class RedBusHomePage {
     }
 
     public void enterDate(String date) {
-        WebElement dateField = driver.findElement(By.xpath(DATE));
-        js.executeScript("arguments[0].value=arguments[1]", dateField, date);
+        WebElement dateField = driver.findElement(By.xpath(DATE_FIELD));
+        js.executeScript("arguments[0].click()", dateField);
+        String d = date.split("-")[0];
+        By by = By.xpath(DATE.replace("$value$", d));
+        WebElement eleDate = baseUtils.untilVisible(driver, by, duration);
+        eleDate.click();
         baseUtils.hardWait(2000);
     }
 
