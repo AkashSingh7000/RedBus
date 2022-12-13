@@ -11,5 +11,4 @@ import io.cucumber.testng.CucumberOptions;
 
 public class RedBusRunner extends AbstractTestNGCucumberTests {
 
-
 }
