@@ -9,7 +9,4 @@ import io.cucumber.testng.CucumberOptions;
                     "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true)
 
-public class RedBusRunner extends AbstractTestNGCucumberTests {
-
-
-}
+public class RedBusRunner extends AbstractTestNGCucumberTests {}
